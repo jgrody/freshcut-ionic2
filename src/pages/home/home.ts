@@ -1,18 +1,21 @@
-import { Component } from '@angular/core';
-
-import { NavController } from 'ionic-angular';
-
-import { AngularFire, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2';
-import { Observable } from 'rxjs/Observable';
-
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {Auth} from '../../providers/auth/auth';
+import {LoginPage} from '../login/login';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-  constructor(public navCtrl: NavController, public af: AngularFire) {
+  //private rootPage: any = StartPage;
+  constructor( public nav: NavController, public authData: Auth) {
+  this.authData = authData;
   }
 
+ logOut(){
+  this.authData.logoutUser().then(() => {
+    this.nav.setRoot(LoginPage);
+  });
+}
 }

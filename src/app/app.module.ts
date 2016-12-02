@@ -1,46 +1,41 @@
-import { NgModule, ErrorHandler } from '@angular/core';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+//import { BrowserModule } from '@angular/platform-browser';
+
+import { NgModule } from '@angular/core';
+import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { AboutPage } from '../pages/about/about';
-import { ContactPage } from '../pages/contact/contact';
+
 import { HomePage } from '../pages/home/home';
-import { TabsPage } from '../pages/tabs/tabs';
+import { LoginPage } from '../pages/login/login';
+import { ForgotPage } from '../pages/forgot/forgot';
+import { RegisterPage } from '../pages/register/register';
 
-import { AngularFireModule, AuthProviders, AuthMethods } from 'angularfire2';
+import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-export const firebaseConfig = {
-  apiKey: "",
-  authDomain: "",
-  databaseURL: "",
-  storageBucket: "",
-  messagingSenderId: ""
-};
+import { Auth } from '../providers/auth/auth';
 
-const myFirebaseAuthConfig = {
-  provider: AuthProviders.Password,
-  method: AuthMethods.Password
-}
 
 @NgModule({
-  declarations: [
-    MyApp,
-    AboutPage,
-    ContactPage,
-    HomePage,
-    TabsPage
-  ],
   imports: [
     IonicModule.forRoot(MyApp),
-    AngularFireModule.initializeApp(firebaseConfig, myFirebaseAuthConfig)
+    ReactiveFormsModule
+  ],
+  declarations: [
+    MyApp,
+    HomePage,
+    LoginPage,
+    ForgotPage,
+    RegisterPage
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    AboutPage,
-    ContactPage,
     HomePage,
-    TabsPage
+    LoginPage,
+    ForgotPage,
+    RegisterPage
   ],
-  providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  providers: [
+    Auth
+  ]
 })
-export class AppModule {}
+export class AppModule { }

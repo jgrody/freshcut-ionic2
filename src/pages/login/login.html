@@ -1,0 +1,43 @@
+<ion-navbar primary *navbar>
+  <ion-header>
+    
+      <ion-title>Firebase 3 Auth Starter</ion-title>
+    
+  </ion-header>
+</ion-navbar>
+
+
+
+<ion-content padding class="login">
+  <ion-item>
+  <div align="center"><span class="header">Firebase 3 Auth Starter</span><br/>
+  <ion-icon clear class="iconlogin" name="at"></ion-icon></div>
+</ion-item>
+  
+  <form [formGroup]="loginForm" (submit)="loginUser($event)">
+
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit">
+      Login
+    </button>
+
+  </form>
+<div align="center">
+    <button ion-button small clear (click)="goToSignup()">
+      Register
+    </button>
+
+    <button ion-button small clear (click)="goToResetPassword()">
+      Forgot Password?
+    </button>
+</div>
+</ion-content>

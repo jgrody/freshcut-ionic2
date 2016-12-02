@@ -1,0 +1,39 @@
+<ion-navbar primary *navbar>
+  <ion-title>
+    Register
+  </ion-title>
+</ion-navbar>
+
+
+<ion-content padding class="signup">
+  
+  <form [formGroup]="signupForm" (submit)="signupUser($event)">
+    <ion-item>
+      <div align="center"><span class="header">Register</span><br/>
+      <div class="iconlogin"><ion-icon name="person-add"></ion-icon></div>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Email</ion-label>
+      <ion-input formControlName="email" type="email" placeholder="Your email address"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Password</ion-label>
+      <ion-input formControlName="password" type="password" placeholder="Your password"></ion-input>
+    </ion-item>
+
+    <button ion-button block type="submit">
+      Create an Account
+    </button>
+
+  </form>
+  <div align="center">
+    <button ion-button small clear (click)="goToLogin()">
+      Back
+    </button>
+
+    
+</div>
+
+</ion-content>
