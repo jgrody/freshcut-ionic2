@@ -17,6 +17,7 @@ import { Auth } from '../providers/auth/auth';
 @NgModule({
   imports: [
     IonicModule.forRoot(MyApp),
+    FormsModule,
     ReactiveFormsModule
   ],
   declarations: [

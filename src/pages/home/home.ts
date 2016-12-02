@@ -10,12 +10,12 @@ import {LoginPage} from '../login/login';
 export class HomePage {
   //private rootPage: any = StartPage;
   constructor( public nav: NavController, public authData: Auth) {
-  this.authData = authData;
+    this.authData = authData;
   }
 
- logOut(){
-  this.authData.logoutUser().then(() => {
-    this.nav.setRoot(LoginPage);
-  });
-}
+  logOut(){
+    this.authData.logoutUser().then(() => {
+      this.nav.setRoot(LoginPage);
+    });
+  }
 }
