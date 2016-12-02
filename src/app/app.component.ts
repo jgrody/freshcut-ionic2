@@ -9,11 +9,11 @@ import { LoginPage } from '../pages/login/login';
 import firebase from 'firebase'; // Big change from '* as firebase'.
 
 export const firebaseConfig = {
-  apiKey: "AIzaSyB92aFEdoS5wtR44OaSkiix-LIB3FADtS0",
-  authDomain: "freshcut.firebaseapp.com",
-  databaseURL: "https://freshcut.firebaseio.com",
-  storageBucket: "project-5391251911339566675.appspot.com",
-  messagingSenderId: "908477229044"
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  storageBucket: "",
+  messagingSenderId: ""
 };
 
 @Component({
