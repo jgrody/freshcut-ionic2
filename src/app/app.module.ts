@@ -10,9 +10,12 @@ import { RegisterPage } from '../pages/register/register';
 
 import { ClientsPage } from '../pages/clients/clients';
 import { SettingsPage } from '../pages/settings/settings';
+import { NewClientModal } from '../pages/clients/new/new';
+
+import firebase from 'firebase'; // Big change from '* as firebase'.
+import { AngularFireModule } from 'angularfire2';
 
 import {
-  /*FormsModule, */
   ReactiveFormsModule
 } from '@angular/forms';
 
@@ -20,10 +23,21 @@ import { Auth } from '../providers/auth/auth';
 
 import { TabsPage } from '../components/tabs/tabs';
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyB92aFEdoS5wtR44OaSkiix-LIB3FADtS0",
+  authDomain: "freshcut.firebaseapp.com",
+  databaseURL: "https://freshcut.firebaseio.com",
+  storageBucket: "project-5391251911339566675.appspot.com",
+  messagingSenderId: "908477229044"
+};
+
+firebase.initializeApp(firebaseConfig);
+
 
 @NgModule({
   imports: [
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig),
     ReactiveFormsModule
   ],
   declarations: [
@@ -34,6 +48,7 @@ import { TabsPage } from '../components/tabs/tabs';
     TabsPage,
     ClientsPage,
     SettingsPage,
+    NewClientModal,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -44,6 +59,7 @@ import { TabsPage } from '../components/tabs/tabs';
     TabsPage,
     ClientsPage,
     SettingsPage,
+    NewClientModal,
   ],
   providers: [
     Auth,
