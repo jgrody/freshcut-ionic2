@@ -8,7 +8,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import {Auth} from '../../providers/auth/auth';
 import {RegisterPage} from '../register/register';
 import {ForgotPage} from '../forgot/forgot';
-import {ClientsPage} from '../home/home';
+import {ClientsPage} from '../clients/clients';
+import {TabsPage} from '../../components/tabs/tabs';
 
 @Component({
   selector: 'page-login',
@@ -47,7 +48,7 @@ export class LoginPage {
         this.loginForm.value.password
       ).then((authData: any) => {
         loadingController.dismiss();
-        this.nav.push(ClientsPage);
+        this.nav.push(TabsPage);
       }).catch((error: any) => {
         if (error) {
           loadingController.dismiss().then(() => {

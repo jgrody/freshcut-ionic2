@@ -4,39 +4,49 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { RegisterPage } from '../pages/register/register';
 
-import {  FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ClientsPage } from '../pages/clients/clients';
+import { SettingsPage } from '../pages/settings/settings';
+
+import {
+  /*FormsModule, */
+  ReactiveFormsModule
+} from '@angular/forms';
 
 import { Auth } from '../providers/auth/auth';
+
+import { TabsPage } from '../components/tabs/tabs';
 
 
 @NgModule({
   imports: [
     IonicModule.forRoot(MyApp),
-    FormsModule,
     ReactiveFormsModule
   ],
   declarations: [
     MyApp,
-    HomePage,
     LoginPage,
     ForgotPage,
-    RegisterPage
+    RegisterPage,
+    TabsPage,
+    ClientsPage,
+    SettingsPage,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
     LoginPage,
     ForgotPage,
-    RegisterPage
+    RegisterPage,
+    TabsPage,
+    ClientsPage,
+    SettingsPage,
   ],
   providers: [
-    Auth
+    Auth,
   ]
 })
 export class AppModule { }

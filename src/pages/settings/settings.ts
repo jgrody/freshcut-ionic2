@@ -4,10 +4,10 @@ import {Auth} from '../../providers/auth/auth';
 import {LoginPage} from '../login/login';
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+  selector: 'clients-page',
+  templateUrl: 'template.html'
 })
-export class HomePage {
+export class SettingsPage {
   //private rootPage: any = StartPage;
   constructor( public nav: NavController, public authData: Auth) {
     this.authData = authData;
