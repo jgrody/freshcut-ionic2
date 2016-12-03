@@ -1,4 +1,4 @@
-import {NavController, LoadingController, AlertController} from 'ionic-angular';
+import {NavController, LoadingController, ToastController} from 'ionic-angular';
 import {Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {Auth} from '../../providers/auth/auth';
@@ -16,7 +16,7 @@ export class RegisterPage {
     public authData: Auth,
     public formBuilder: FormBuilder,
     private loadingController: LoadingController,
-    private alertCtrl: AlertController
+    private toastCtrl: ToastController
   ) {
 
     this.nav = nav;
@@ -44,18 +44,25 @@ export class RegisterPage {
       ).then((newUser: any) => {
         console.log(newUser);
         loadingController.dismiss();
-        let alert = this.alertCtrl.create({
-          title: 'Success',
-          subTitle: 'User Registered',
-          buttons: ['Dismiss']
+        let toast = this.toastCtrl.create({
+          message: 'User was added successfully',
+          duration: 3000,
+          position: 'top'
         });
 
-        alert.present();
+        toast.present();
         this.nav.push(LoginPage);
       }).catch((error: any) => {
         if (error) {
-          console.log("Error:" + error.code);
-          loadingController.dismiss();
+          loadingController.dismiss().then(() => {
+            let toast = this.toastCtrl.create({
+              message: error.message,
+              position: 'top',
+              showCloseButton: true,
+              cssClass: 'error-toast'
+            });
+            toast.present();
+          });
         }
       });
   }

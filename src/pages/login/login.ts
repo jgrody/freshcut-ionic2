@@ -1,10 +1,14 @@
-import {NavController, LoadingController} from 'ionic-angular';
+import {
+  NavController,
+  LoadingController,
+  ToastController
+} from 'ionic-angular';
 import {Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {Auth} from '../../providers/auth/auth';
 import {RegisterPage} from '../register/register';
 import {ForgotPage} from '../forgot/forgot';
-import {HomePage} from '../home/home';
+import {ClientsPage} from '../home/home';
 
 @Component({
   selector: 'page-login',
@@ -17,7 +21,8 @@ export class LoginPage {
     public nav: NavController,
     public authData: Auth,
     public formBuilder: FormBuilder,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    private toastCtrl: ToastController,
   ) {
 
     this.nav = nav;
@@ -32,9 +37,7 @@ export class LoginPage {
   loginUser(event){
     event.preventDefault();
 
-    let loadingController = this.loadingController.create({
-      content: 'Please wait...'
-    });
+    let loadingController = this.loadingController.create();
 
     loadingController.present();
 
@@ -43,13 +46,19 @@ export class LoginPage {
         this.loginForm.value.email,
         this.loginForm.value.password
       ).then((authData: any) => {
-        console.log(authData.uid);
         loadingController.dismiss();
-        this.nav.push(HomePage);
+        this.nav.push(ClientsPage);
       }).catch((error: any) => {
         if (error) {
-          console.log("Error:" + error.code);
-          loadingController.dismiss();
+          loadingController.dismiss().then(() => {
+            let toast = this.toastCtrl.create({
+              message: error.message,
+              position: 'top',
+              showCloseButton: true,
+              cssClass: 'error-toast'
+            });
+            toast.present();
+          });
         }
       });
   }

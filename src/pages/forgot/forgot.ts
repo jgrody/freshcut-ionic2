@@ -1,4 +1,4 @@
-import {NavController, LoadingController, AlertController} from 'ionic-angular';
+import {NavController, LoadingController, ToastController} from 'ionic-angular';
 import {Component} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import {Auth} from '../../providers/auth/auth';
@@ -22,7 +22,7 @@ export class ForgotPage {
     public authData: Auth,
     public formBuilder: FormBuilder,
     private loadingController: LoadingController,
-    private alertCtrl: AlertController
+    private toastCtrl: ToastController
   ) {
 
     this.nav = nav;
@@ -36,20 +36,34 @@ export class ForgotPage {
   resetPassword(event){
     event.preventDefault();
 
-    console.log(this.resetPasswordForm.value.email);
-    let loading = this.loadingController.create({
-      content: 'Please wait...'
-    });
+    let loadingController = this.loadingController.create();
 
-    this.authData.resetPassword(this.resetPasswordForm.value.email);
-    loading.dismiss();
-    let alert = this.alertCtrl.create({
-      title: 'Success',
-      subTitle: 'Password reset link sent',
-      buttons: ['Dismiss']
-    });
-    alert.present();
-    this.nav.push(LoginPage);
+    this.authData
+      .resetPassword(
+        this.resetPasswordForm.value.email
+      ).then((data: any) => {
+        loadingController.dismiss();
+        let toast = this.toastCtrl.create({
+          message: 'Password reset link sent',
+          duration: 3000,
+          position: 'top'
+        });
+        toast.present();
+        this.nav.push(LoginPage);
+      })
+      .catch((error: any) => {
+        if (error) {
+          loadingController.dismiss().then(() => {
+            let toast = this.toastCtrl.create({
+              message: error.message,
+              position: 'top',
+              showCloseButton: true,
+              cssClass: 'error-toast'
+            });
+            toast.present();
+          });
+        }
+      });
   }
 
   goToLogin(){

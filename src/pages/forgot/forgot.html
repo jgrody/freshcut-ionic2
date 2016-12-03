@@ -1,15 +1,11 @@
-<ion-navbar primary *navbar>
-  <ion-title>
-    Reset your Password
-  </ion-title>
-</ion-navbar>
-
 <ion-content padding class="reset-password" scroll="false">
   <ion-item>
-    <div align="center"><span class="header">Forgot</span><br/>
-      <div class="iconlogin"><ion-icon name="refresh-circle"></ion-icon>
+    <div class="spacer" style="height: 60px"></div>
+    <div align="center" class="profile-image">
+      <div class="iconlogin"><ion-icon name="refresh-circle" color="dark"></ion-icon>
       </div>
     </div>
+    <div class="spacer" style="height: 25px"></div>
   </ion-item>
 
   <form [formGroup]="resetPasswordForm" (submit)="resetPassword($event)">
@@ -18,7 +14,7 @@
       <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
 
-    <button ion-button block type="submit">
+    <button ion-button block color="dark" type="submit">
       Reset your Password
     </button>
   </form>

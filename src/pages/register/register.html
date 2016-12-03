@@ -1,28 +1,30 @@
-<ion-navbar primary *navbar>
-  <ion-title>
-    Register
-  </ion-title>
-</ion-navbar>
-
 <ion-content padding class="signup" scroll="false">
+  <ion-item>
+    <div class="spacer" style="height: 60px"></div>
+    <div align="center" class="profile-image">
+      <img src="img/FfYRe1SgTJilFa2UxgyK_mr-freshcut.jpg" width="40%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
+    </div>
+    <div class="spacer" style="height: 25px"></div>
+  </ion-item>
 
   <form [formGroup]="signupForm" (submit)="signupUser($event)">
     <ion-item>
-      <div align="center"><span class="header">Register</span><br/>
-        <div class="iconlogin"><ion-icon name="person-add"></ion-icon></div>
-      </div>
-    </ion-item>
-    <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email" placeholder="Your email address"></ion-input>
+      <ion-label stacked required>Email</ion-label>
+      <ion-input formControlName="email" type="email"></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input formControlName="password" type="password" placeholder="Your password"></ion-input>
+      <ion-label stacked required>Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
     </ion-item>
 
-    <button ion-button block type="submit">
+    <button
+      ion-button
+      block
+      color="dark"
+      type="submit"
+      [disabled]="!signupForm.valid"
+    >
       Create an Account
     </button>
 

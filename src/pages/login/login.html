@@ -1,36 +1,42 @@
-<ion-navbar primary *navbar>
-  <ion-header>
-
-    <ion-title>Firebase 3 Auth Starter</ion-title>
-
-  </ion-header>
-</ion-navbar>
-
 <ion-content padding class="login" scroll="false">
   <ion-item>
-    <div align="center">
-      <span class="header">Firebase 3 Auth Starter</span><br/>
-      <ion-icon clear class="iconlogin" name="at"></ion-icon>
+    <div class="spacer" style="height: 60px"></div>
+    <div align="center" class="profile-image">
+      <img src="img/FfYRe1SgTJilFa2UxgyK_mr-freshcut.jpg" width="40%" height="auto" style="display: block; margin-left: auto; margin-right: auto;">
     </div>
+    <div class="spacer" style="height: 25px"></div>
   </ion-item>
 
-  <form [formGroup]="loginForm" (submit)="loginUser($event)">
-
+  <form [formGroup]="loginForm" (submit)="loginUser($event)" novalidate>
     <ion-item>
-      <ion-label stacked>Email</ion-label>
-      <ion-input formControlName="email" type="email"></ion-input>
+      <ion-label stacked required>Email</ion-label>
+      <ion-input
+        formControlName="email"
+        type="email"
+        required
+      ></ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Password</ion-label>
-      <ion-input formControlName="password" type="password"></ion-input>
+      <ion-label stacked required>Password</ion-label>
+      <ion-input
+        formControlName="password"
+        type="password"
+      ></ion-input>
     </ion-item>
 
-    <button ion-button block type="submit">
+    <button
+      ion-button
+      padding-left
+      block
+      color="dark"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
       Login
     </button>
-
   </form>
+
   <div align="center">
     <button ion-button small clear (click)="goToSignup()">
       Register
