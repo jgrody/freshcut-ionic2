@@ -8,7 +8,7 @@ import {Auth} from '../../providers/auth/auth';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
-import { NewClientModal } from './new/new';
+import { NewPersonModal } from './new/new';
 
 
 @Component({
@@ -16,8 +16,9 @@ import { NewClientModal } from './new/new';
   templateUrl: 'template.html'
 })
 export class ClientsPage {
-  pros: FirebaseListObservable<any[]>;
   clients: FirebaseListObservable<any[]>;
+  pros: FirebaseListObservable<any[]>;
+
   private currentUser: any
 
   //private rootPage: any = StartPage;
@@ -32,16 +33,17 @@ export class ClientsPage {
 
     this.currentUser = this.authData.fireAuth.currentUser;
 
-    console.log(this.currentUser)
     this.clients = af.database.list('/'+ this.currentUser.uid + '/clients');
+    this.pros = af.database.list('/'+ this.currentUser.uid + '/pros');
 
     this.authData = authData;
-
   }
 
   openAddModal(){
-    let newClientModal = this.modalCtrl.create(NewClientModal, {
-      clients: this.clients
+    let newClientModal = this.modalCtrl.create(NewPersonModal, {
+      clients: this.clients,
+      pros: this.pros,
+      segment: this.options.segment
     });
     newClientModal.present();
   }

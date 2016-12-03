@@ -10,7 +10,7 @@ import { RegisterPage } from '../pages/register/register';
 
 import { ClientsPage } from '../pages/clients/clients';
 import { SettingsPage } from '../pages/settings/settings';
-import { NewClientModal } from '../pages/clients/new/new';
+import { NewPersonModal } from '../pages/clients/new/new';
 
 import firebase from 'firebase'; // Big change from '* as firebase'.
 import { AngularFireModule } from 'angularfire2';
@@ -48,7 +48,7 @@ firebase.initializeApp(firebaseConfig);
     TabsPage,
     ClientsPage,
     SettingsPage,
-    NewClientModal,
+    NewPersonModal,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -59,7 +59,7 @@ firebase.initializeApp(firebaseConfig);
     TabsPage,
     ClientsPage,
     SettingsPage,
-    NewClientModal,
+    NewPersonModal,
   ],
   providers: [
     Auth,

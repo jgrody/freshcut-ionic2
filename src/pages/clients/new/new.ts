@@ -11,9 +11,11 @@ import {
   templateUrl: 'template.html'
 })
 
-export class NewClientModal {
-  public newClientForm: any;
+export class NewPersonModal {
+  public newPersonForm: any;
+  public segment: string;
   private clientList: any;
+  private proList: any;
 
   constructor(
     public params: NavParams,
@@ -22,19 +24,25 @@ export class NewClientModal {
   ) {
 
     this.clientList = params.get('clients');
+    this.proList = params.get('pros');
+    this.segment = params.get('segment');
 
-    this.newClientForm = formBuilder.group({
+    this.newPersonForm = formBuilder.group({
       name: ['', Validators.required],
       phone: ['', Validators.required],
       zipcode: ['', Validators.required],
     });
+
   }
 
-  addClient(){
-    this.clientList.push({
-      name: this.newClientForm.value.name,
-      phone: this.newClientForm.value.phone,
-      zipcode: this.newClientForm.value.zipcode,
+  addPerson(){
+
+    console.log('segment', this.segment)
+    let list = (this.segment == 'clients') ? this.clientList : this.proList;
+    list.push({
+      name: this.newPersonForm.value.name,
+      phone: this.newPersonForm.value.phone,
+      zipcode: this.newPersonForm.value.zipcode,
     }).then(this.dismiss())
   }
 

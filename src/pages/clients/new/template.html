@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      New Client
+      {{segment == 'clients' ? 'New Client' : 'New Pro'}}
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -11,7 +11,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content padding>
-  <form [formGroup]="newClientForm" (submit)="addClient($event)" novalidate>
+  <form [formGroup]="newPersonForm" (submit)="addPerson($event)" novalidate>
     <ion-item>
       <ion-label stacked required>Name</ion-label>
       <ion-input
@@ -42,7 +42,7 @@
       block
       color="dark"
       type="submit"
-      [disabled]="!newClientForm.valid"
+      [disabled]="!newPersonForm.valid"
     >
       Create
     </button>

@@ -4,6 +4,7 @@
     <ion-buttons end>
       <button ion-button icon-only (click)="openAddModal()">
         <ion-icon name="add"></ion-icon>
+        {{options.segment == 'clients' ? 'Add Client' : 'Add Pro'}}
       </button>
     </ion-buttons>
 
@@ -56,7 +57,40 @@
       </ion-item-sliding>
     </ion-list>
 
-    <ion-list *ngSwitchCase="'pros'"></ion-list>
+    <ion-list *ngSwitchCase="'pros'">
+      <ion-item-sliding *ngFor="let pro of pros | async">
+        <ion-item>
+          <ion-avatar item-left>
+            <img src="img/DJzHUXHhSIdSKV2WrotQ_profile_image.jpg">
+          </ion-avatar>
+          <h2>{{pro.name}}</h2>
+          <h3>
+            <ion-icon name="call" style="padding-right: 5px;"></ion-icon>
+            {{pro.phone}}
+          </h3>
+          <p>
+            <ion-icon name="compass" style="padding-right: 5px;"></ion-icon>
+            {{pro.zipcode}}
+          </p>
+        </ion-item>
+        <ion-item-options side="left">
+          <button ion-button color="primary">
+            <ion-icon name="text"></ion-icon>
+            Text
+          </button>
+          <button ion-button color="secondary">
+            <ion-icon name="call"></ion-icon>
+            Call
+          </button>
+        </ion-item-options>
+        <ion-item-options side="right">
+          <button ion-button color="primary">
+            <ion-icon name="mail"></ion-icon>
+            Email
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
   </div>
 
 </ion-content>
