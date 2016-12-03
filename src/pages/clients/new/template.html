@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Description
+      New Client
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -10,13 +10,42 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content>
-  <ion-list>
+<ion-content padding>
+  <form [formGroup]="newClientForm" (submit)="addClient($event)" novalidate>
     <ion-item>
-      <ion-avatar item-left>
-      </ion-avatar>
-      <h2>Line 1</h2>
-      <p>Line 2</p>
+      <ion-label stacked required>Name</ion-label>
+      <ion-input
+        formControlName="name"
+        type="text"
+        required
+      ></ion-input>
     </ion-item>
-  </ion-list>
+
+    <ion-item>
+      <ion-label stacked required>Phone Number</ion-label>
+      <ion-input
+        formControlName="phone"
+        type="phone"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked required>Zip</ion-label>
+      <ion-input
+        formControlName="zipcode"
+        type="text"
+      ></ion-input>
+    </ion-item>
+
+    <button
+      ion-button
+      block
+      color="dark"
+      type="submit"
+      [disabled]="!newClientForm.valid"
+    >
+      Create
+    </button>
+  </form>
+
 </ion-content>

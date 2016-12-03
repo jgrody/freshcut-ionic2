@@ -12,19 +12,15 @@
 </ion-header>
 <ion-content padding class="clients">
   <ion-segment [(ngModel)]="options.segment">
-    <ion-segment-button value="pros">
-      Pros
-    </ion-segment-button>
     <ion-segment-button value="clients">
       Clients
+    </ion-segment-button>
+    <ion-segment-button value="pros">
+      Pros
     </ion-segment-button>
   </ion-segment>
 
   <div [ngSwitch]="options.segment" margin-top>
-    <ion-list *ngSwitchCase="'pros'">
-
-    </ion-list>
-
     <ion-list *ngSwitchCase="'clients'">
       <ion-item-sliding *ngFor="let client of clients | async">
         <ion-item>
@@ -32,6 +28,14 @@
             <img src="img/DJzHUXHhSIdSKV2WrotQ_profile_image.jpg">
           </ion-avatar>
           <h2>{{client.name}}</h2>
+          <h3>
+            <ion-icon name="call" style="padding-right: 5px;"></ion-icon>
+            {{client.phone}}
+          </h3>
+          <p>
+            <ion-icon name="compass" style="padding-right: 5px;"></ion-icon>
+            {{client.zipcode}}
+          </p>
         </ion-item>
         <ion-item-options side="left">
           <button ion-button color="primary">
@@ -51,6 +55,8 @@
         </ion-item-options>
       </ion-item-sliding>
     </ion-list>
+
+    <ion-list *ngSwitchCase="'pros'"></ion-list>
   </div>
 
 </ion-content>

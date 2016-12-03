@@ -21,7 +21,7 @@ export class ClientsPage {
   private currentUser: any
 
   //private rootPage: any = StartPage;
-  public options = {segment: 'pros'}
+  public options = {segment: 'clients'}
 
   constructor(
     public nav: NavController,
@@ -40,7 +40,9 @@ export class ClientsPage {
   }
 
   openAddModal(){
-    let newClientModal = this.modalCtrl.create(NewClientModal, { userId: 8675309 });
+    let newClientModal = this.modalCtrl.create(NewClientModal, {
+      clients: this.clients
+    });
     newClientModal.present();
   }
 }
