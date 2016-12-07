@@ -10,33 +10,33 @@ import { Observable } from 'rxjs/Observable';
 
 import { NewPersonModal } from './new/new';
 
-
 @Component({
-  selector: 'clients-page',
-  templateUrl: 'template.html'
+  selector: 'page-people',
+  templateUrl: 'people.html'
 })
-export class ClientsPage {
+export class PeoplePage {
   clients: FirebaseListObservable<any[]>;
   pros: FirebaseListObservable<any[]>;
 
   private currentUser: any
-
-  //private rootPage: any = StartPage;
-  public options = {segment: 'clients'}
+  public options = {
+    segment: 'clients',
+    showingSearch: false
+  }
 
   constructor(
     public nav: NavController,
     public modalCtrl: ModalController,
     public authData: Auth,
     public af: AngularFire
-  ) {
+  ){
 
-    this.currentUser = this.authData.fireAuth.currentUser;
+    this.authData = authData;
+
+    this.currentUser = this.authData.currentUser;
 
     this.clients = af.database.list('/'+ this.currentUser.uid + '/clients');
     this.pros = af.database.list('/'+ this.currentUser.uid + '/pros');
-
-    this.authData = authData;
   }
 
   openAddModal(){
@@ -47,4 +47,8 @@ export class ClientsPage {
     });
     newClientModal.present();
   }
+
+  ionViewDidLoad() {
+  }
+
 }

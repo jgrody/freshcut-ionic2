@@ -8,9 +8,10 @@ import { LoginPage } from '../pages/login/login';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { RegisterPage } from '../pages/register/register';
 
-import { ClientsPage } from '../pages/clients/clients';
+import { PeopleModule } from '../pages/people/module';
 import { SettingsPage } from '../pages/settings/settings';
-import { NewPersonModal } from '../pages/clients/new/new';
+
+import { NavController } from 'ionic-angular';
 
 import firebase from 'firebase'; // Big change from '* as firebase'.
 import { AngularFireModule } from 'angularfire2';
@@ -33,12 +34,12 @@ export const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
 @NgModule({
   imports: [
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    PeopleModule
   ],
   declarations: [
     MyApp,
@@ -46,9 +47,7 @@ firebase.initializeApp(firebaseConfig);
     ForgotPage,
     RegisterPage,
     TabsPage,
-    ClientsPage,
     SettingsPage,
-    NewPersonModal,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,12 +56,10 @@ firebase.initializeApp(firebaseConfig);
     ForgotPage,
     RegisterPage,
     TabsPage,
-    ClientsPage,
     SettingsPage,
-    NewPersonModal,
   ],
   providers: [
-    Auth,
+    Auth
   ]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Platform } from 'ionic-angular';
 
-import { ClientsPage } from '../../pages/clients/clients'
+import { PeoplePage } from '../../pages/people/people'
 import { SettingsPage } from '../../pages/settings/settings'
 
 
@@ -11,7 +11,7 @@ import { SettingsPage } from '../../pages/settings/settings'
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
-  clientsPage = ClientsPage;
+  peoplePage = PeoplePage;
   settingsPage = SettingsPage;
 
   isAndroid: boolean = false;

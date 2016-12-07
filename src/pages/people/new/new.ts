@@ -8,7 +8,7 @@ import {
 } from 'ionic-angular';
 
 @Component({
-  templateUrl: 'template.html'
+  templateUrl: 'new.html'
 })
 
 export class NewPersonModal {
@@ -36,8 +36,6 @@ export class NewPersonModal {
   }
 
   addPerson(){
-
-    console.log('segment', this.segment)
     let list = (this.segment == 'clients') ? this.clientList : this.proList;
     list.push({
       name: this.newPersonForm.value.name,
