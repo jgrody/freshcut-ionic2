@@ -8,7 +8,6 @@ import { LoginPage } from '../pages/login/login';
 import { ForgotPage } from '../pages/forgot/forgot';
 import { RegisterPage } from '../pages/register/register';
 
-import { PeopleModule } from '../pages/people/module';
 import { AdminModule } from '../pages/admin/module';
 
 import { SettingsPage } from '../pages/settings/settings';
@@ -39,7 +38,6 @@ firebase.initializeApp(firebaseConfig);
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     ReactiveFormsModule,
-    PeopleModule,
     AdminModule,
   ],
   declarations: [
