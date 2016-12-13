@@ -11,6 +11,7 @@ import {
   NavParams,
   ViewController,
   AlertController,
+  ActionSheetController,
 } from 'ionic-angular';
 
 import {Auth} from '../../../providers/auth/auth';
@@ -32,6 +33,7 @@ export class CategoriesPage {
     public af: AngularFire,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
+    public actionSheetCtrl: ActionSheetController,
   ){
 
     this.authData = authData;
@@ -80,6 +82,37 @@ export class CategoriesPage {
     modal.present()
   }
 
+  removeCategory(item){
+    this.categories.remove(item.$key)
+  }
+
+  openActionSheet(category){
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Modify Category: ' + category.name,
+      buttons: [
+        {
+          text: 'Delete',
+          role: 'destructive',
+          handler: (data) => {
+            this.removeCategory(category)
+          }
+        },{
+          text: 'Edit',
+          handler: () => {
+            this.openEditModal(category)
+          }
+        },{
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
   camelize(str) {
     return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(letter, index) {
       return index == 0 ? letter.toLowerCase() : letter.toUpperCase();
@@ -122,17 +155,6 @@ export class EditCategoryModal {
     this.list.update(this.category.$key, {
       name: this.form.value.name
     }).then(this.dismiss())
-  }
-
-
-  delete(){
-    this.list.remove(this.category.$key)
-    // .catch((data)=>{
-    //   console.log("catch:", data);
-    // })
-    // .then((data)=>{
-    //   console.log("then:", data);
-    // })
   }
 
   dismiss(){

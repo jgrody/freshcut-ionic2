@@ -9,6 +9,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
 
 import { CategoriesPage } from './categories/categories'
+// import { ProductsPage } from './products/products'
 
 @Component({
   selector: 'page-admin',

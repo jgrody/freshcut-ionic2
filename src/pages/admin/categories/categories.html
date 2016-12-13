@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-navbar>
     <ion-title>
       Categories
     </ion-title>
@@ -8,14 +8,15 @@
         <ion-icon name="add-circle-outline"></ion-icon>
       </button>
     </ion-buttons>
-  </ion-toolbar>
+  </ion-navbar>
 </ion-header>
+
 <ion-content padding>
   <ion-list>
     <button
       ion-item
       *ngFor="let item of categories | async"
-      (click)="openEditModal(item)"
+      (click)="openActionSheet(item)"
     >
       {{ item.name }}
     </button>
