@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Categories
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openAddModal()">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <ion-list>
+    <button
+      ion-item
+      *ngFor="let item of categories | async"
+      (click)="openEditModal(item)"
+    >
+      {{ item.name }}
+    </button>
+  </ion-list>
+</ion-content>

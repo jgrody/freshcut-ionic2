@@ -8,6 +8,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Auth} from '../../providers/auth/auth';
 import {RegisterPage} from '../register/register';
 import {ForgotPage} from '../forgot/forgot';
+import {AdminPage} from '../admin/admin';
 
 @Component({
   selector: 'page-login',

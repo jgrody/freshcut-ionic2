@@ -9,9 +9,9 @@ import { ForgotPage } from '../pages/forgot/forgot';
 import { RegisterPage } from '../pages/register/register';
 
 import { PeopleModule } from '../pages/people/module';
-import { SettingsPage } from '../pages/settings/settings';
+import { AdminModule } from '../pages/admin/module';
 
-import { NavController } from 'ionic-angular';
+import { SettingsPage } from '../pages/settings/settings';
 
 import firebase from 'firebase'; // Big change from '* as firebase'.
 import { AngularFireModule } from 'angularfire2';
@@ -39,7 +39,8 @@ firebase.initializeApp(firebaseConfig);
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig),
     ReactiveFormsModule,
-    PeopleModule
+    PeopleModule,
+    AdminModule,
   ],
   declarations: [
     MyApp,

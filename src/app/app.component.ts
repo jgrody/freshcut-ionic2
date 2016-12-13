@@ -5,6 +5,7 @@ import firebase from 'firebase';
 
 //Pages
 import { LoginPage } from '../pages/login/login';
+import { AdminPage } from '../pages/admin/admin';
 import { Auth } from '../providers/auth/auth';
 
 import {TabsPage} from '../components/tabs/tabs';
@@ -26,7 +27,14 @@ export class MyApp {
 
     firebase.auth().onAuthStateChanged((_currentUser) => {
       if (_currentUser) {
-        this.nav.setRoot(TabsPage)
+        console.log("_curr:", _currentUser);
+        if (_currentUser.email.match('admin@freshcut.com')) {
+          console.log('admin');
+          this.nav.setRoot(AdminPage)
+        } else {
+          console.log('regular user');
+          this.nav.setRoot(TabsPage)
+        }
       } else {
         this.nav.setRoot(LoginPage)
       }

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        Cancel
+      </button>
+    </ion-buttons>
+    <ion-title>
+      New Category
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="form" (submit)="save()" novalidate>
+    <ion-item>
+      <ion-label stacked required>Name</ion-label>
+      <ion-input
+        formControlName="name"
+        [(ngModel)]="category.name"
+        type="text"
+        required
+      ></ion-input>
+    </ion-item>
+    <button
+      ion-button
+      block
+      color="dark"
+      type="submit"
+      [disabled]="!form.valid"
+    >
+      Save
+    </button>
+
+    <button
+      ion-button
+      block
+      color="danger"
+      (click)="delete()"
+    >
+      Delete
+    </button>
+  </form>
+</ion-content>
